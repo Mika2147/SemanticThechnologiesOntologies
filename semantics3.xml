@@ -1,0 +1,203 @@
+<rdf:RDF
+xmlns:owl ="http://www.w3.org/2002/07/owl"
+xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns" xmlns:rdfs ="http://www.w3.org/2000/01/rdf-schema" xmlns:xsd ="http://www.w3.org/2001/XMLSchema">
+
+<owl:Class rdf:ID="CarbonDioxideLevel">
+	<rdfs:label>Carbon Dioxide Level</rdfs:label>
+</owl:Class>
+
+<owl:DatatypeProperty rdf:ID="CarbonDioxideLevelValue">
+	<rdfs:domain rdf:resource="#CarbonDioxideLevel" />
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema/double" />
+</owl:DatatypeProperty>
+
+<owl:ObjectProperty rdf:ID="CarbonDioxideLevelUnit">
+	<rdfs:domain rdf:resource="#CarbonDioxideLevel" />
+	<rdfs:range rdf:resource="Unit" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="CarbonDioxideLevelLocation">
+	<rdfs:domain rdf:resource="#CarbonDioxideLevel" />
+	<rdfs:range rdf:resource="Location" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="CarbonDioxideLevelSource">
+	<rdfs:domain rdf:resource="#CarbonDioxideLevel" />
+	<rdfs:range rdf:resource="Source" />
+</owl:ObjectProperty>
+
+<owl:Class rdf:ID="CarbonDioxideProduction">
+	<rdfs:label>Carbon Dioxide Production</rdfs:label>
+</owl:Class>
+
+<owl:DatatypeProperty rdf:ID="CarbonDioxideProductionValue">
+	<rdfs:domain rdf:resource="#CarbonDioxideProduction" />
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema/double" />
+</owl:DatatypeProperty>
+
+<owl:ObjectProperty rdf:ID="CarbonDioxideProductionUnit">
+	<rdfs:domain rdf:resource="#CarbonDioxideProduction" />
+	<rdfs:range rdf:resource="Unit" />
+	<owl:Restriction>
+  		<owl:onProperty rdf:resource="#unit" />
+  		<owl:hasValue rdf:resource="#Megatons" />
+	</owl:Restriction>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="CarbonDioxideProductionLocation">
+	<rdfs:domain rdf:resource="#CarbonDioxideProduction" />
+	<rdfs:range rdf:resource="Location" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="CarbonDioxideProductionSource">
+	<rdfs:domain rdf:resource="#CarbonDioxideProduction" />
+	<rdfs:range rdf:resource="Source" />
+</owl:ObjectProperty>
+
+<owl:Class rdf:ID="AverageTemperature">
+	<rdfs:label>Average Temperature</rdfs:label>
+</owl:Class>
+
+<owl:DatatypeProperty rdf:ID="AverageTemperatureValue">
+	<rdfs:domain rdf:resource="#AverageTemperature" />
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema/double" />
+</owl:DatatypeProperty>
+
+<owl:ObjectProperty rdf:ID="AverageTemperatureUnit">
+	<rdfs:domain rdf:resource="#AverageTemperature" />
+	<rdfs:range rdf:resource="Unit" />
+	<owl:Restriction>
+  		<owl:onProperty rdf:resource="#unit" />
+  		<owl:hasValue rdf:resource="#Fahreheit" />
+	</owl:Restriction>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="AverageTemperatureLocation">
+	<rdfs:domain rdf:resource="#AverageTemperature" />
+	<rdfs:range rdf:resource="Location" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="AverageTemperatureSource">
+	<rdfs:domain rdf:resource="#AverageTemperature" />
+	<rdfs:range rdf:resource="Source" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="AverageTemperatureTimePeriod">
+	<rdfs:domain rdf:resource="#AverageTemperature" />
+	<rdfs:range rdf:resource="TimePeriod" />
+</owl:ObjectProperty>
+
+<owl:Class rdf:ID="AverageTemperatureRise">
+	<rdfs:label>Average Temperature Rise</rdfs:label>
+	<owl:Restriction>
+  		<owl:onProperty rdf:resource="#unit" />
+  		<owl:hasValue rdf:resource="#Fahreheit" />
+	</owl:Restriction>
+</owl:Class>
+
+<owl:DatatypeProperty rdf:ID="AverageTemperatureRiseValue">
+	<rdfs:domain rdf:resource="#AverageTemperatureRise" />
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema/double" />
+</owl:DatatypeProperty>
+
+<owl:ObjectProperty rdf:ID="AverageTemperatureRiseUnit">
+	<rdfs:domain rdf:resource="#AverageTemperatureRise" />
+	<rdfs:range rdf:resource="Unit" />
+	<owl:Restriction>
+  		<owl:onProperty rdf:resource="#unit" />
+  		<owl:hasValue rdf:resource="#Fahreheit" />
+	</owl:Restriction>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="AverageTemperatureRiseLocation">
+	<rdfs:domain rdf:resource="#AverageTemperatureRise" />
+	<rdfs:range rdf:resource="Location" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="AverageTemperatureRiseSource">
+	<rdfs:domain rdf:resource="#AverageTemperatureRise" />
+	<rdfs:range rdf:resource="Source" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="AverageTemperatureRiseTimePeriod">
+	<rdfs:domain rdf:resource="#AverageTemperatureRise" />
+	<rdfs:range rdf:resource="TimePeriod" />
+</owl:ObjectProperty>
+
+
+<owl:Class rdf:ID="Location">
+	<rdfs:label>Location</rdfs:label>
+	<owl:Restriction>
+		<owl:onProperty>
+			<owl:ObjectProperty rdf:about="#hasDegree"b/>
+		</owl:onProperty> 
+		<owl:someValueFrom>
+			<owl:Class>
+				<owl:oneOf rdf:parseType="Collection">
+					<owl:class>
+						<owl:Restriction>
+							<owl:onProperty rdf:resource="#region" />
+  							<owl:allValuesFrom rdf:resource="#Region"  />
+						</owl:Restriction>
+					</owl:class>
+					<owl:class>
+						<rdfs:label>Global</rdfs:label>
+					</owl:class>
+				</owl:oneOf>
+			</owl:Class>
+		</owl:someValueFrom> 
+	</owl:Restriction>
+</owl:Class>
+
+<owl:Class rdf:ID="Region">
+	<rdfs:label>Region</rdfs:label>
+</owl:Class>
+
+<owl:DatatypeProperty rdf:ID="RegionName">
+	<rdfs:domain rdf:resource="#Region" />
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema/string" />
+</owl:DatatypeProperty>
+
+<owl:Class rdf:ID="Unit">
+	<rdfs:subClassOf> 
+		<owl:Restriction>
+			<owl:onProperty>
+				<owl:ObjectProperty rdf:about="#measeuredIn"b/>
+				</owl:onProperty> 
+				<owl:someValueFrom>
+					<owl:Class>
+						<owl:oneOf rdf:parseType="Collection">
+							<Unit rdf:ID="ppm" />
+							<Unit rdf:ID="Megatons" />
+							<Unit rdf:ID="Fahreheit" />
+						</owl:oneOf>
+					</owl:Class>
+				</owl:someValueFrom> 
+		</owl:Restriction>
+	</rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:Id="Source">
+	<rdfs:label>Source</rdfs:label>
+</owl:Class>
+
+<owl:DatatypeProperty rdf:ID="SourceName">
+	<rdfs:domain rdf:resource="#Source" />
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema/string" />
+</owl:DatatypeProperty>
+
+<owl:Class rdf:ID="TimePeriod">
+		<rdfs:label>Time Period</rdfs:label>
+</owl:Class>
+
+<owl:DatatypeProperty rdf:ID="PeriodStart">
+	<rdfs:domain rdf:resource="#TimePeriod" />
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema/dateTime" />
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="PeriodEnd">
+	<rdfs:domain rdf:resource="#TimePeriod" />
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema/dateTime" />
+</owl:DatatypeProperty>
+
+</rdf:RDF>
