@@ -13,7 +13,7 @@ xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns" xmlns:rdfs ="http://www.
 
 <owl:ObjectProperty rdf:ID="CarbonDioxideLevelUnit">
 	<rdfs:domain rdf:resource="#CarbonDioxideLevel" />
-	<rdfs:range rdf:resource="Unit" />
+	<rdfs:range rdf:resource="#ppm" />
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:ID="CarbonDioxideLevelLocation">
@@ -37,11 +37,7 @@ xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns" xmlns:rdfs ="http://www.
 
 <owl:ObjectProperty rdf:ID="CarbonDioxideProductionUnit">
 	<rdfs:domain rdf:resource="#CarbonDioxideProduction" />
-	<rdfs:range rdf:resource="Unit" />
-	<owl:Restriction>
-  		<owl:onProperty rdf:resource="#unit" />
-  		<owl:hasValue rdf:resource="#Megatons" />
-	</owl:Restriction>
+	<rdfs:range rdf:resource="Megatons" />
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:ID="CarbonDioxideProductionLocation">
@@ -65,11 +61,7 @@ xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns" xmlns:rdfs ="http://www.
 
 <owl:ObjectProperty rdf:ID="AverageTemperatureUnit">
 	<rdfs:domain rdf:resource="#AverageTemperature" />
-	<rdfs:range rdf:resource="Unit" />
-	<owl:Restriction>
-  		<owl:onProperty rdf:resource="#unit" />
-  		<owl:hasValue rdf:resource="#Fahreheit" />
-	</owl:Restriction>
+	<rdfs:range rdf:resource="Fahrenheit" />
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:ID="AverageTemperatureLocation">
@@ -89,10 +81,6 @@ xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns" xmlns:rdfs ="http://www.
 
 <owl:Class rdf:ID="AverageTemperatureRise">
 	<rdfs:label>Average Temperature Rise</rdfs:label>
-	<owl:Restriction>
-  		<owl:onProperty rdf:resource="#unit" />
-  		<owl:hasValue rdf:resource="#Fahreheit" />
-	</owl:Restriction>
 </owl:Class>
 
 <owl:DatatypeProperty rdf:ID="AverageTemperatureRiseValue">
@@ -102,11 +90,7 @@ xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns" xmlns:rdfs ="http://www.
 
 <owl:ObjectProperty rdf:ID="AverageTemperatureRiseUnit">
 	<rdfs:domain rdf:resource="#AverageTemperatureRise" />
-	<rdfs:range rdf:resource="Unit" />
-	<owl:Restriction>
-  		<owl:onProperty rdf:resource="#unit" />
-  		<owl:hasValue rdf:resource="#Fahreheit" />
-	</owl:Restriction>
+	<rdfs:range rdf:resource="Fahrenheit" />
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:ID="AverageTemperatureRiseLocation">
@@ -159,22 +143,19 @@ xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns" xmlns:rdfs ="http://www.
 </owl:DatatypeProperty>
 
 <owl:Class rdf:ID="Unit">
-	<rdfs:subClassOf> 
-		<owl:Restriction>
-			<owl:onProperty>
-				<owl:ObjectProperty rdf:about="#measeuredIn"b/>
-				</owl:onProperty> 
-				<owl:someValueFrom>
-					<owl:Class>
-						<owl:oneOf rdf:parseType="Collection">
-							<Unit rdf:ID="ppm" />
-							<Unit rdf:ID="Megatons" />
-							<Unit rdf:ID="Fahreheit" />
-						</owl:oneOf>
-					</owl:Class>
-				</owl:someValueFrom> 
-		</owl:Restriction>
-	</rdfs:subClassOf>
+	<rdfs:label>Unit</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:ID="ppm">
+	<rdfs:subClassOf rdf:resource="#Unit"
+</owl:Class>
+
+<owl:Class rdf:ID="Megatons">
+	<rdfs:subClassOf rdf:resource="#Unit"
+</owl:Class>
+
+<owl:Class rdf:ID="Fahrenheit">
+	<rdfs:subClassOf rdf:resource="#Unit"
 </owl:Class>
 
 <owl:Class rdf:Id="Source">
